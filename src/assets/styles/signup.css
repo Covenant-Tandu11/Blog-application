@@ -29,11 +29,14 @@ sign-up-btn{
     justify-content: space-between;
     padding: 5rem;
     gap: 5.75rem;
+    min-width: 0;
 }
 
 .signup-form{
     display: flex;
+    flex: 1 1 0;
     flex-direction: column;
+    min-width: 0;
     background-color: #fff;
     box-shadow: 0 8px 28px 0 rgba(0, 0, 0, 0.15);
     border-radius: 24px;
@@ -167,15 +170,23 @@ sign-up-btn{
 }
 
 .signup-image{
-    flex: 1;
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 620px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
+    border-radius: 24px;
     
 }
 
 .signup-image img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 24px;
 }
 
@@ -222,4 +233,85 @@ sign-up-btn{
     font-size: 0.75rem;
     font-weight: 400;
     margin-top: 0.5rem;
+}
+
+.sign-up-btn{
+    width: 100%;
+    background-color: #356AE6;
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (max-width: 960px) {
+    .signup-section{
+        gap: 2rem;
+        padding: 3rem 2rem;
+    }
+
+    .signup-form{
+        padding: 1.5rem;
+    }
+
+    .signup-image{
+        min-height: 560px;
+    }
+
+    .signup-image-quote{
+        right: 1.5rem;
+        left: 1.5rem;
+    }
+
+    .signup-image-quote p{
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+    }
+}
+
+@media (max-width: 680px) {
+    .signup-section{
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .signup-form{
+        width: 100%;
+        padding: 1.25rem;
+        border-radius: 18px;
+    }
+
+    .signup-header{
+        gap: 1rem;
+    }
+
+    .signup-header h1{
+        font-size: clamp(1.75rem, 8vw, 2.25rem);
+    }
+
+    .signup-image{
+        width: 100%;
+        min-height: 320px;
+    }
+
+    .signup-image-banner{
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .signup-image-quote{
+        bottom: 1.25rem;
+    }
+
+    .signup-image-quote p{
+        font-size: 1.35rem;
+    }
+
+    .form-group.terms{
+        align-items: flex-start;
+    }
 }

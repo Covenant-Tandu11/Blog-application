@@ -4,11 +4,14 @@
     align-items: center;
     padding: 5rem;
     gap: 5.75rem;
+    min-width: 0;
 }
 
 .login-form{
     display: flex;
+    flex: 1 1 0;
     flex-direction: column;
+    min-width: 0;
     background-color: #fff;
     box-shadow: 0 8px 28px 0 rgba(0, 0, 0, 0.15);
     border-radius: 24px;
@@ -95,7 +98,9 @@
 
 .login-image {
     position: relative;
-    width: 50%;
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 620px;
     overflow: hidden;
     border-radius: 24px;
 }
@@ -195,4 +200,91 @@
     font-size: 0.75rem;
     font-weight: 400;
     margin-top: 0.5rem;
+}
+
+.login-form form > button[type="submit"]{
+    width: 100%;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 12px;
+    background-color: #356AE6;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (max-width: 960px) {
+    .login-section{
+        gap: 2rem;
+        padding: 3rem 2rem;
+    }
+
+    .login-form{
+        padding: 1.5rem;
+    }
+
+    .login-image{
+        min-height: 560px;
+    }
+
+    .login-image-quote{
+        right: 1.5rem;
+        left: 1.5rem;
+    }
+
+    .login-image-quote p{
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+    }
+}
+
+@media (max-width: 680px) {
+    .login-section{
+        align-items: stretch;
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .login-form{
+        width: 100%;
+        padding: 1.25rem;
+        border-radius: 18px;
+    }
+
+    .login-header{
+        gap: 1rem;
+    }
+
+    .login-header h1{
+        font-size: clamp(1.75rem, 8vw, 2.25rem);
+    }
+
+    .login-image{
+        width: 100%;
+        min-height: 320px;
+    }
+
+    .login-image-banner{
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .login-image-quote{
+        bottom: 1.25rem;
+    }
+
+    .login-image-quote p{
+        font-size: 1.35rem;
+    }
+
+    .form-options{
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .form-options p,
+    .form-group.remember label{
+        font-size: 0.75rem;
+    }
 }

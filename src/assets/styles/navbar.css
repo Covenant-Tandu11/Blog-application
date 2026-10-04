@@ -135,4 +135,8 @@ a{
         width: 100%;
         justify-content: space-between;
     }
+
+    .nav-link{
+        font-size: 0.8rem;
+    }
 }

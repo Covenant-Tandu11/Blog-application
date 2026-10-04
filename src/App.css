@@ -4,12 +4,25 @@
     box-sizing: border-box;
 }
 
+html{
+    min-width: 320px;
+}
+
 body{
     font-family: 'Inter', sans-serif;
     background-color: #F7F8FC;
 }
 
+img{
+    max-width: 100%;
+}
+
+button,
+input,
+textarea{
+    font: inherit;
+}
+
 ul{
     list-style: none;
 }
-

@@ -1,0 +1,192 @@
+.create-post-container{
+    padding: 5rem;
+}
+
+.create-post-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+}
+
+.create-post-title h1{
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #172033;
+}
+
+.create-post-title p{
+    font-size: 1rem;
+    color: #667085;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.create-post-actions{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.create-post-actions button{
+    border: none;
+    padding: 0.6875rem 1.125rem;
+    border-radius: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.create-post-actions button:hover{
+    transform: translateY(-2px);
+    transition: all 0.3s ease-in;
+}
+
+.save-draft-btn{
+    background-color: #fff;
+    border: 1px solid #D0D5DD;
+    color: #172033;
+}
+
+.save-draft-btn:hover{
+    background-color: #356AE6;
+    color: #fff;
+}
+
+.publish-btn{
+    background-color: #356AE6;
+    color: #fff;
+}
+
+.publish-btn:hover{
+    background-color: #2C5AC9;
+}
+
+.create-post-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.75rem;
+}
+
+.form-group-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-group-header label{
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #172033;
+}
+
+.form-group-header p{
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #98A2B3;
+}
+
+.visually-hidden-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.custom-dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 180px; 
+  background-color: #f7f9fc;
+  border: 1px solid #D0D5DD; 
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.custom-dropzone:hover {
+  background-color: #f0f4f8;
+  border-color: #0076d6;
+}
+
+.dropzone-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dropzone-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+.dropzone-text {
+  display: flex;
+  flex-direction: column;
+  color: #1c1e21;
+  font-family: sans-serif;
+}
+
+.bold-text {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.sub-text {
+  font-size: 14px;
+  color: #65676b;
+}
+
+.category-buttons{
+    display: flex;
+    gap: 0.625rem;
+
+}
+
+.category-btn{
+    border: none;
+    background-color: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    padding: 0.56rem 0.94rem;
+    border-radius: 999px;
+    color: #667085;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.category-btn:hover{
+    background-color: #356AE6;
+    color: #fff;
+}
+
+textarea{
+    background-color: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    border-radius: 18px;
+    height: 500px;
+    resize: none;
+    padding: 1.75rem;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+textarea:focus{
+    border: 1px solid #356AE6;
+}

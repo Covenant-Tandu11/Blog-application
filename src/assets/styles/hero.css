@@ -1,0 +1,149 @@
+.hero-section{
+    padding: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.welcome-badge{
+    background-color: #EAF0FF;
+    display: inline-block;
+    color: #356AE6;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.right-hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.375rem;
+    max-width: 680px;
+}
+
+.right-hero h1{
+    color: #172033;
+    font-size: 3.5rem;
+}
+
+.right-hero p{
+    color: #667085;
+}
+
+.search-pannel{
+    width: 520px;
+    border-radius: 24px;
+    background-color: #fff;
+    box-shadow: 0 8px 28px 0 rgba(0, 0, 0, 0.15);
+    padding: 1.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+}
+
+.search-pannel h2{
+    color: #172033;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.search-input{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-input input{
+    outline: none;
+    border: 1px solid #D0D5DD;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    padding: 1rem 1rem 1rem 3rem; 
+    position: relative;
+    font-family: inherit;
+}
+
+.search-input input::placeholder{
+    color: #98A2B3;
+}
+
+.search-input svg{
+    color: #98A2B3;
+    position: absolute; 
+    left: 1rem;        
+    pointer-events: none;
+    z-index: 1;
+}
+
+.popular-topics{
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    align-items: center;
+}
+
+.popular-topics p{
+    color: #667085;
+}
+
+.popular-topics ul{
+    display: flex;
+    gap: 0.75rem;
+}
+
+.popular-topics li{
+    background: #F2F4F7;
+    color: #344054;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.popular-topics li:hover {
+  background: #E4E7EC;
+}
+
+@media (max-width: 960px) {
+    .hero-section {
+        gap: 2rem;
+        padding: 4rem 2rem;
+    }
+
+    .right-hero {
+        flex: 1;
+    }
+
+    .right-hero h1 {
+        font-size: clamp(2.5rem, 5vw, 3.25rem);
+    }
+
+    .search-pannel {
+        width: min(44%, 520px);
+    }
+}
+
+@media (max-width: 680px) {
+    .hero-section {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 3rem 1rem;
+    }
+
+    .right-hero h1 {
+        font-size: clamp(2.25rem, 10vw, 3rem);
+    }
+
+    .search-pannel {
+        width: 100%;
+        padding: 1.25rem;
+    }
+
+    .popular-topics {
+        flex-wrap: wrap;
+    }
+}

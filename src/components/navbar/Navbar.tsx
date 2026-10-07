@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { supabase } from '../../lib/supabase';
 import { useState, useEffect } from 'react';
 import '../../assets/styles/navbar.css'
+import defaultAvatar from '../../assets/images/avatar.jpg'
 
 type NavbarVariant = 'auth' | 'home'
 interface NavbarProps {
@@ -28,27 +29,33 @@ const Navbar = ({variant}: NavbarProps) => {
   return (
     <header>
       <nav className='navigation-bar'>
-        <div className='left-nav'>
+        <Link to={variant === 'auth' ? '/' : '/home'} className='left-nav' aria-label='WriteSpace home'>
           <span className='logo'>W</span>
           <h2>WriteSpace</h2>
-        </div>
+        </Link>
         <div className='right-nav'>
           {variant === 'auth' ? (
             <ul className='nav-links'>
-              <li className='nav-link'>
-                <FontAwesomeIcon icon={faArrowLeft} />
-                <span>Back to stories</span>
+              <li>
+                <Link to='/home' className='nav-link back-link'>
+                  <FontAwesomeIcon icon={faArrowLeft} />
+                  <span>Back to stories</span>
+                </Link>
               </li>
             </ul>
           ) : (
             <>
               <ul className='nav-links'>
-                <Link to={'/home'}>
-                  <li className='nav-link'>Home</li>
-                </Link>
-                <Link to={'/explore'}>
-                  <li className='nav-link'>Explore</li>
-                </Link>
+                <li>
+                  <NavLink to='/home' className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to='/explore' className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+                    Explore
+                  </NavLink>
+                </li>
               </ul>
               <Link to="/createPost">
                 <button className='write-btn'>
@@ -56,8 +63,8 @@ const Navbar = ({variant}: NavbarProps) => {
                   <span>Write</span>
                 </button>
               </Link>
-              <Link to={`/profilePage/${userId}`}>
-                <img src="" alt="Profile Picture" className='profile-picture'/>
+              <Link to={userId ? `/profilePage/${userId}` : '/login'} className='profile-link' aria-label='Open profile'>
+                <img src={defaultAvatar} alt="" className='profile-picture'/>
               </Link>
             </>)}
         </div>

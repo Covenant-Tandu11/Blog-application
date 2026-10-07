@@ -4,6 +4,7 @@ import { usePostStore } from '../../zustand/usePostStore'
 import { useEffect } from 'react'
 import defaultAvatar from '../../assets/images/avatar.jpg'
 import '../../assets/styles/explore.css'
+import Footer from '../footer/Footer'
 
 const Explore = () => {
   const { posts, fetchPosts } = usePostStore()
@@ -11,6 +12,13 @@ const Explore = () => {
     fetchPosts()
   }, [])
   console.log(posts)
+  const formatDate = (date: string) => {
+    return new Intl.DateTimeFormat('en-Us',{
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    }).format(new Date(date))
+  }
   return (
     <>
       <Navbar variant='home'/>
@@ -43,11 +51,12 @@ const Explore = () => {
         <div className="story-grid">
           {
             posts.map((post) => (
-              <StoryCard key={post.id} category={post.category} cover_img={post.cover_image} title={post.title} excerpt={post.excerpt} displayName={post.profiles?.display_name || 'Unknown author'} avatar_url={post.profiles?.avatar_url || defaultAvatar} date={post.created_at}/>
+              <StoryCard key={post.id} postId={post.id} category={post.category} cover_img={post.cover_image} title={post.title} excerpt={post.excerpt} displayName={post.profiles?.display_name || 'Unknown author'} avatar_url={post.profiles?.avatar_url || defaultAvatar} date={formatDate(post.created_at)}/>
             ))
           }
         </div>
       </section>
+      <Footer />
     </>
   )
 }

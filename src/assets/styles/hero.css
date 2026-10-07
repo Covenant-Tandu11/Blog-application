@@ -1,149 +1,96 @@
-.hero-section{
-    padding: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+.hero-section {
+    position: relative;
+    width: min(100% - 2rem, 1240px);
+    min-height: 640px;
+    margin: 0 auto 4rem;
+    overflow: hidden;
+    border-radius: 28px;
+    background: #111827;
 }
 
-.welcome-badge{
-    background-color: #EAF0FF;
-    display: inline-block;
-    color: #356AE6;
-    padding: 0.45rem 0.75rem;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 600;
+.hero-section > img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
 }
 
-.right-hero{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 1.375rem;
-    max-width: 680px;
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.26) 46%, rgba(0, 0, 0, 0.38) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 38%, rgba(0, 0, 0, 0.78) 100%);
 }
 
-.right-hero h1{
-    color: #172033;
-    font-size: 3.5rem;
-}
-
-.right-hero p{
-    color: #667085;
-}
-
-.search-pannel{
-    width: 520px;
-    border-radius: 24px;
-    background-color: #fff;
-    box-shadow: 0 8px 28px 0 rgba(0, 0, 0, 0.15);
-    padding: 1.7rem;
+.hero-content {
+    position: absolute;
+    left: clamp(1.5rem, 5vw, 3.75rem);
+    bottom: clamp(2rem, 7vw, 4.75rem);
     display: flex;
     flex-direction: column;
-    gap: 1.125rem;
+    gap: 1rem;
+    z-index: 2;
+    color: white;
+    max-width: 880px;
 }
 
-.search-pannel h2{
-    color: #172033;
-    font-size: 1.25rem;
+.hero-content .featured-title {
+    margin: 0;
+    font-size: 1.125rem;
     font-weight: 700;
 }
 
-.search-input{
-    display: flex;
-    align-items: center;
-    position: relative;
+.hero-content h1{
+    max-width: 850px;
+    margin: 0;
+    font-size: clamp(2.2rem, 5.8vw, 4.75rem);
+    font-family: 'Sen', sans-serif;
+    font-weight: 800;
+    line-height: 0.98;
 }
 
-.search-input input{
-    outline: none;
-    border: 1px solid #D0D5DD;
-    width: 100%;
-    padding: 1rem;
-    border-radius: 12px;
-    padding: 1rem 1rem 1rem 3rem; 
-    position: relative;
-    font-family: inherit;
+.hero-content p{
+    max-width: 680px;
+    margin: 0;
+    font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+    font-weight: 600;
+    line-height: 1.5;
 }
 
-.search-input input::placeholder{
-    color: #98A2B3;
+.hero-read-link {
+    position: absolute;
+    right: clamp(1.75rem, 4vw, 4rem);
+    bottom: clamp(7rem, 15vw, 12rem);
+    z-index: 2;
+    display: grid;
+    width: clamp(3rem, 7vw, 5rem);
+    height: clamp(3rem, 7vw, 5rem);
+    place-items: center;
+    color: #fff;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    transition: transform 0.2s ease;
 }
 
-.search-input svg{
-    color: #98A2B3;
-    position: absolute; 
-    left: 1rem;        
-    pointer-events: none;
-    z-index: 1;
+.hero-read-link:hover {
+    transform: translateX(8px);
 }
 
-.popular-topics{
-    display: flex;
-    gap: 0.75rem;
-    font-size: 0.75rem;
-    align-items: center;
-}
-
-.popular-topics p{
-    color: #667085;
-}
-
-.popular-topics ul{
-    display: flex;
-    gap: 0.75rem;
-}
-
-.popular-topics li{
-    background: #F2F4F7;
-    color: #344054;
-    padding: 0.35rem 0.75rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-.popular-topics li:hover {
-  background: #E4E7EC;
-}
-
-@media (max-width: 960px) {
+@media (max-width: 760px) {
     .hero-section {
-        gap: 2rem;
-        padding: 4rem 2rem;
+        min-height: 560px;
+        border-radius: 22px;
     }
 
-    .right-hero {
-        flex: 1;
+    .hero-content {
+        right: 1.5rem;
     }
 
-    .right-hero h1 {
-        font-size: clamp(2.5rem, 5vw, 3.25rem);
-    }
-
-    .search-pannel {
-        width: min(44%, 520px);
-    }
-}
-
-@media (max-width: 680px) {
-    .hero-section {
-        align-items: stretch;
-        flex-direction: column;
-        padding: 3rem 1rem;
-    }
-
-    .right-hero h1 {
-        font-size: clamp(2.25rem, 10vw, 3rem);
-    }
-
-    .search-pannel {
-        width: 100%;
-        padding: 1.25rem;
-    }
-
-    .popular-topics {
-        flex-wrap: wrap;
+    .hero-read-link {
+        top: 1.75rem;
+        right: 1.75rem;
+        bottom: auto;
     }
 }

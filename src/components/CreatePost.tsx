@@ -8,18 +8,27 @@ import {
 import '../assets/styles/createPost.css'
 import { usePostStore } from '../zustand/usePostStore'
 import type { postForm } from '../types/postForm'
+import Footer from './footer/Footer'
+
+const createExcerpt = (content: string) => {
+  const words = content.trim().split(/\s+/).filter(Boolean)
+  const excerpt = words.slice(0, 100).join(' ')
+
+  return words.length > 100 ? `${excerpt}...` : excerpt
+}
 
 const CreatePost = () => {
   const { createPost } = usePostStore()
     function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         const formData = new FormData(e.currentTarget)
+        const content = formData.get('content') as string
         const postData: postForm = {
           title: formData.get('title') as string,
-          excerpt: formData.get('excerpt') as string,
+          excerpt: createExcerpt(content),
           cover_img: formData.get('image') as File,
           category: 'Technology',
-          content: formData.get('content') as string
+          content
         }
         createPost(postData)
     }
@@ -68,21 +77,6 @@ const CreatePost = () => {
                 name="title"
                 placeholder="Enter your post title"
               />
-            </div>
-
-
-            {/* Excerpt */}
-            <div className="form-group">
-              <div className="form-group-header">
-                <label htmlFor="excerpt">Excerpt</label>
-                <p>Short introduction to your story</p>
-              </div>
-
-              <textarea
-                id="excerpt"
-                name="excerpt"
-                placeholder="Write a short introduction to your story..."
-              ></textarea>
             </div>
 
 
@@ -192,6 +186,7 @@ const CreatePost = () => {
         </div>
 
       </div>
+      <Footer />
     </>
   )
 }

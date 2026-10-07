@@ -5,12 +5,36 @@ import type { Posts } from '../types/posts'
 
 export interface PostStore {
     posts: Posts[]
+    fetchPost: (postId: string) => Promise<void>
     fetchPosts: () => Promise<void>
     createPost: (formData: postForm) => Promise<void>
 }
 
 export const usePostStore = create<PostStore>((set) => ({
     posts: [],
+
+    fetchPost: async (postId: string) => {
+    const { data, error } = await supabase
+        .from('posts')
+        .select(`
+            *,
+            profiles (
+                display_name,
+                avatar_url
+            )
+        `)
+        .eq('id', postId)
+        .single()
+
+    if (error) {
+        console.log(error)
+        throw error
+    }
+
+    set({
+        posts: [data]
+    })
+},
 
     fetchPosts: async () => {
         const { data, error } = await supabase
@@ -23,6 +47,7 @@ export const usePostStore = create<PostStore>((set) => ({
                     avatar_url
                 )
             `)
+            .order('created_at', { ascending: false })
 
         if (error) {
             console.log(error)
@@ -70,7 +95,7 @@ export const usePostStore = create<PostStore>((set) => ({
     }
 
     set((state) => ({
-        posts: [...state.posts, data]
+        posts: [data, ...state.posts]
     }))
 }
 }))

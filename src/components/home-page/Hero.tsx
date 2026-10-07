@@ -1,42 +1,44 @@
-import sparkle  from '../../assets/images/sparkle.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import '../../assets/styles/hero.css'
+import { useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
+import heroImage from '../../assets/images/hero-img.jpg'
+import { Link } from 'react-router-dom'
+import { usePostStore } from '../../zustand/usePostStore'
 
 const Hero = () => {
+    const { posts, fetchPosts } = usePostStore()
+    const fetchedPost = posts[0]
+    useEffect(() => {
+        fetchPosts();
+    }, [fetchPosts]);
 
+    if (!fetchedPost) {
+    return <p>Loading featured post...</p>
+}
 
-  return (
-    <>
-        <Navbar variant='home'/>
-        <section className='hero-section'>
-            <div className='right-hero'>
-                <div className='welcome-badge'>
-                    <img src={sparkle} alt="" />
-                    <span>A place for curious minds</span>
+    return (
+        <>
+            <Navbar variant='home'/>
+            <section className='hero-section'>
+                <img src={heroImage} alt=''/>
+                <div className='hero-overlay'></div>
+                <div className='hero-content'>
+                    <p className='featured-title'>Featured</p>
+                    <h1>{fetchedPost.title}</h1>
+                    <p>{fetchedPost.excerpt}</p>
                 </div>
-                <h1>Good ideas deserve room to grow</h1>
-                <p>Read thoughtful stories from independent writers, or start sharing your own perspective with a welcoming community</p>
-            </div>
-            <div className="search-pannel">
-                <h2>What do you want to read today?</h2>
-                <div className='search-input'>
-                    <FontAwesomeIcon icon={faMagnifyingGlass}/>
-                    <input type="text" placeholder='Search posts, topics or writers'/>
-                </div>
-                <div className='popular-topics'>
-                    <p>Popular:</p>
-                    <ul>
-                        <li>Design</li>
-                        <li>Habits</li>
-                        <li>Ai</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </>
-  )
+                <Link
+                    className='hero-read-link'
+                    to={`/blogPost/${fetchedPost.id}`}
+                    aria-label={`Read ${fetchedPost.title}`}
+                >
+                    <FontAwesomeIcon icon={faArrowRight} />
+                </Link>
+            </section>
+        </>
+    )
 }
 
 export default Hero

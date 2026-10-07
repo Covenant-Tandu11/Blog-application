@@ -57,6 +57,7 @@ const ProfilePage = () => {
                 posts.map((post) => (
                   <StoryCard
                 key={post.id}
+                postId={post.id}
                 category={post.category}
                   cover_img={post.cover_image}
                   title={post.title}

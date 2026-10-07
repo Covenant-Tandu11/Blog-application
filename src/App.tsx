@@ -22,7 +22,7 @@ function App() {
       }
     }
     fetchData()
-  })
+  }, [])
     return (
     <>
       <Routes>
@@ -32,7 +32,7 @@ function App() {
         <Route path="/explore" element={<Explore />} />
         <Route path="/createPost" element={<CreatePost />} />
         <Route path='/profilePage/:userId' element={<ProfilePage/>}/>
-        <Route path='/blogPost' element={<BlogPostPage/>}/>
+        <Route path='/blogPost/:postId' element={<BlogPostPage/>}/>
         
       </Routes>
     </>

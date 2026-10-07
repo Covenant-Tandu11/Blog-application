@@ -1,11 +1,13 @@
 import Hero from '../../components/home-page/Hero'
-import FeaturedStory from '../../components/home-page/FeaturedStory'
+import Recents from '../../components/home-page/RecentBlogPost'
+import Footer from '../../components/footer/Footer'
 
 function Home() {
     return (
         <>
-            <Hero />
-            <FeaturedStory />
+            <Hero/>
+            <Recents />
+            <Footer />
         </>
     )
 }
